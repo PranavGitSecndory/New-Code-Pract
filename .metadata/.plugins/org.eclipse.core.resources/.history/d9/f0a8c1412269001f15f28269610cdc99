@@ -1,0 +1,35 @@
+package Practice;
+class base
+{
+	int n;
+	void print()
+	{
+		System.out.println("base");
+	}
+}
+class derived extends base
+{
+	derived()
+	{
+	super();
+	System.out.println("def constr");
+	}
+	void init(int n)
+	{
+		super.print();
+	}
+	void disply(int n)
+	{
+		System.out.println();
+	}
+}
+public class super_immdate_instance {
+	public static void main(String args[])
+	{
+		derived ob=new derived();
+	}
+	
+	
+	
+	
+}

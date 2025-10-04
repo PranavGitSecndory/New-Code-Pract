@@ -1,0 +1,25 @@
+//Create a thread that prints numbers from 1 to 
+//5 with a 1-second delay. Use synchronized block inside the loop.
+package syncronization;
+
+public class Q1_A extends Thread{
+	public void run()
+	{
+		for(int i=1; i<=5; i++)
+		{
+			synchronized (this)
+			{
+				System.out.println("number "+i);
+				try {
+					Thread.sleep(1000);
+				} catch (Exception e) {
+					System.out.println(e);
+				}
+			}
+		}
+	}
+public static void main(String[] args) {
+	Q1_A ob=new Q1_A();
+	ob.start();
+}
+}

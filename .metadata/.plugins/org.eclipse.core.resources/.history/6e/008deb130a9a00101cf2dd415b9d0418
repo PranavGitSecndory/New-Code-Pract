@@ -1,0 +1,11 @@
+package pkg_2_Access_Modifer_prc;
+
+import pkg_1_Access_Modifier_prc.Q1_Private_Class_1;
+
+public class Q1_private_Class_2 {
+public static void main(String[] args) {
+	Q1_Private_Class_1 ob=new Q1_Private_Class_1();
+	
+	System.out.println("private method not accec in outside the class ");
+}
+}

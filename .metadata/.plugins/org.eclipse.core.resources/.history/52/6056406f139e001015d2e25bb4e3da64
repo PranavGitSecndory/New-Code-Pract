@@ -1,0 +1,253 @@
+package mini_application_Id_genration;
+
+import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+public class CoreBanking {
+
+    static final String main_file = "Master.txt";
+    static final String trasection_file = "Transaction.txt";
+    static Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        while (true) {
+            System.out.println("\n----- CORE BANKING -----");
+            System.out.println("1) SIGNUP");
+            System.out.println("2) SIGNIN");
+            System.out.println("3) EXIT");
+            System.out.print("ENTER YOUR CHOICE: ");
+            String choice = sc.nextLine();
+
+            switch (choice) {
+                case "1":
+                    signup();
+                    break;
+                case "2":
+                    signin();
+                    break;
+                case "3":
+                    System.out.println("Thank you for using Core Banking. Goodbye!");
+                    System.exit(0);
+                default:
+                    System.out.println("Invalid Choice!");
+            }
+        }
+    }
+
+    // ---------------- SIGNUP ----------------
+    static void signup() {
+        try {
+            System.out.print("FIRST NAME: ");
+            String firstName = sc.nextLine();
+            System.out.print("SURNAME: ");
+            String surname = sc.nextLine();
+            System.out.print("PASSWORD: ");
+            String password = sc.nextLine();
+            System.out.print("MOBILE NO: ");
+            String mobileNo = sc.nextLine();
+            System.out.print("AGE: ");
+            String age = sc.nextLine();
+            System.out.print("MIN BALANCE AMT: ");
+            double minBalance = Double.parseDouble(sc.nextLine());
+
+            // Generate Customer ID starting from 100
+            int newId = 100; // default if file is empty
+            File masterFile = new File(MASTER_FILE);
+            if (masterFile.exists()) {
+                BufferedReader br = new BufferedReader(new FileReader(masterFile));
+                String lastLine = null, line;
+                while ((line = br.readLine()) != null) {
+                    lastLine = line;
+                }
+                br.close();
+                if (lastLine != null) {
+                    String[] data = lastLine.split("\\|");
+                    newId = Integer.parseInt(data[0]) + 1; // increment last customer ID
+                }
+            }
+
+            String customerId = String.valueOf(newId);
+
+            // Write to master file
+            BufferedWriter bw = new BufferedWriter(new FileWriter(MASTER_FILE, true));
+            bw.write(customerId + "|" + firstName + "|" + surname + "|" + password + "|" + mobileNo + "|" + age + "|" + minBalance + "|" + minBalance);
+            bw.newLine();
+            bw.close();
+
+            System.out.println("Signup Successful! Your Customer ID: " + customerId);
+
+        } catch (Exception e) {
+            System.out.println("Error in signup: " + e.getMessage());
+        }
+    }
+
+    // ---------------- SIGNIN ----------------
+    static void signin() {
+        try {
+            System.out.print("ENTER CUSTOMER ID: ");
+            String customerId = sc.nextLine();
+            System.out.print("ENTER PASSWORD: ");
+            String password = sc.nextLine();
+
+            String[] customerData = authenticate(customerId, password);
+            if (customerData != null) {
+                System.out.println("Login Successful!");
+                customerMenu(customerData);
+            } else {
+                System.out.println("Invalid Customer ID or Password!");
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error in signin: " + e.getMessage());
+        }
+    }
+
+    static String[] authenticate(String customerId, String password) throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(MASTER_FILE));
+        String line;
+        while ((line = br.readLine()) != null) {
+            String[] data = line.split("\\|");
+            if (data[0].equals(customerId) && data[3].equals(password)) {
+                br.close();
+                return data;
+            }
+        }
+        br.close();
+        return null;
+    }
+
+    // ---------------- CUSTOMER MENU ----------------
+    static void customerMenu(String[] customerData) throws IOException {
+        while (true) {
+            System.out.println("\n----- CUSTOMER MENU -----");
+            System.out.println("1) DEPOSIT");
+            System.out.println("2) WITHDRAWAL");
+            System.out.println("3) REPORTS");
+            System.out.println("4) UPDATE MOBILE NO");
+            System.out.println("5) BACK TO MAIN MENU");
+            System.out.println("6) EXIT");
+            System.out.print("ENTER YOUR CHOICE: ");
+            String choice = sc.nextLine();
+
+            switch (choice) {
+                case "1":
+                    deposit(customerData);
+                    break;
+                case "2":
+                    withdrawal(customerData);
+                    break;
+                case "3":
+                    reports(customerData[0]);
+                    break;
+                case "4":
+                    updateMobile(customerData);
+                    break;
+                case "5":
+                    return; // back to main menu
+                case "6":
+                    System.out.println("Thank you for using Core Banking. Goodbye!");
+                    System.exit(0);
+                default:
+                    System.out.println("Invalid Choice!");
+            }
+        }
+    }
+
+    // ---------------- DEPOSIT ----------------
+    static void deposit(String[] customerData) throws IOException {
+        System.out.print("ENTER AMOUNT TO DEPOSIT: ");
+        double amt = Double.parseDouble(sc.nextLine());
+        double balance = Double.parseDouble(customerData[7]);
+        balance += amt;
+        customerData[7] = String.valueOf(balance);
+
+        updateMasterFile(customerData);
+        writeTransaction(customerData[0], "DEPOSIT", amt);
+        System.out.println("Deposit Successful! Current Balance: " + balance);
+    }
+
+    // ---------------- WITHDRAWAL ----------------
+    static void withdrawal(String[] customerData) throws IOException {
+        System.out.print("ENTER AMOUNT TO WITHDRAW: ");
+        double amt = Double.parseDouble(sc.nextLine());
+        double balance = Double.parseDouble(customerData[7]);
+
+        if (amt > balance) {
+            System.out.println("Insufficient Balance!");
+            return;
+        }
+
+        balance -= amt;
+        customerData[7] = String.valueOf(balance);
+
+        updateMasterFile(customerData);
+        writeTransaction(customerData[0], "WITHDRAWAL", amt);
+        System.out.println("Withdrawal Successful! Current Balance: " + balance);
+    }
+
+    // ---------------- REPORTS ----------------
+    static void reports(String customerId) throws IOException {
+        System.out.println("\n--- TRANSACTION REPORT ---");
+        File transFile = new File(TRANSACTION_FILE);
+        if(!transFile.exists()) {
+            System.out.println("No transactions yet.");
+            return;
+        }
+
+        BufferedReader br = new BufferedReader(new FileReader(transFile));
+        String line;
+        boolean found = false;
+        while ((line = br.readLine()) != null) {
+            String[] data = line.split("\\|");
+            if (data[0].equals(customerId)) {
+                System.out.println(data[1] + " | Amount: " + data[2] + " | Date: " + data[3]);
+                found = true;
+            }
+        }
+        br.close();
+        if (!found) System.out.println("No transactions found.");
+    }
+
+    // ---------------- UPDATE MOBILE ----------------
+    static void updateMobile(String[] customerData) throws IOException {
+        System.out.print("ENTER NEW MOBILE NO: ");
+        String newMobile = sc.nextLine();
+        customerData[4] = newMobile;
+        updateMasterFile(customerData);
+        System.out.println("Mobile Number Updated Successfully!");
+    }
+
+    // ---------------- HELPER: Update Master File ----------------
+    static void updateMasterFile(String[] customerData) throws IOException {
+        File file = new File(MASTER_FILE);
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        List<String> allLines = new ArrayList<>();
+        String line;
+        while ((line = br.readLine()) != null) {
+            String[] data = line.split("\\|");
+            if (data[0].equals(customerData[0])) {
+                allLines.add(String.join("|", customerData));
+            } else {
+                allLines.add(line);
+            }
+        }
+        br.close();
+
+        BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+        for (String l : allLines) {
+            bw.write(l);
+            bw.newLine();
+        }
+        bw.close();
+    }
+
+    // ---------------- HELPER: Write Transaction ----------------
+    static void writeTransaction(String customerId, String type, double amt) throws IOException {
+        BufferedWriter bw = new BufferedWriter(new FileWriter(TRANSACTION_FILE, true));
+        String date = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
+        bw.write(customerId + "|" + type + "|" + amt + "|" + date);
+        bw.newLine();
+        bw.close();
+    }
+}

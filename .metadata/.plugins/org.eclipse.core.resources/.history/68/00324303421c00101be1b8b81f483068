@@ -1,0 +1,113 @@
+package Collection;
+
+import java.util.ArrayList;
+
+public class Arraylist_All_Method {
+
+ void add()
+{
+		ArrayList ob=new ArrayList();
+		ob.add("sagar");
+		System.out.println("Add method "+ob);
+}
+ 
+ void addall()
+ {
+	 ArrayList ob1=new ArrayList();
+	 ArrayList ob2=new ArrayList();
+	 ob1.add(1);
+	 ob1.add(2);
+	 ob1.add(3);
+	 
+	 ob2.add(4);
+	 ob2.add(5);
+	 
+	 ob1.addAll(ob2);
+	 System.out.println("Add all method"+ob1);
+ }
+ 
+ void remove()
+ {
+	 ArrayList ob3=new ArrayList();
+	 ob3.add("nick");
+	 ob3.add("sagar");
+	 ob3.add("ganesh");
+	 System.out.println("befor remove"+ob3);
+	 ob3.remove("ganesh");
+	 System.out.println("after remove"+ob3);
+	 
+ }
+ void removeall()
+ {
+	 ArrayList ob4= new ArrayList();
+	 ob4.add("nick");
+	 ob4.add("sagar");
+	 ob4.add("ganesh");
+	 System.out.println("Befor remove all"+ob4);
+	 
+	 System.out.println("After remove all = "+ob4.removeAll(ob4));
+ }
+ void contain()
+ {
+	 ArrayList ob5= new ArrayList();
+	 ob5.add("nick");
+	 ob5.add(2);
+	 ob5.add(false);
+	 ob5.add(44.4);
+	 
+	 System.out.println("contain method = "+ob5.contains("nick"));
+ }
+ void containall()
+ {
+	 ArrayList ob5= new ArrayList();
+	 ArrayList ob6= new ArrayList();
+	 ob5.add("nick");
+	 ob5.add(2);
+	 ob5.add(false);
+	 ob5.add(44.4);
+	 
+	 ob6.add("nick");
+	 ob6.add(2);
+	 ob6.add(false); 
+	 System.out.println("contain all method = "+ob5.containsAll(ob6));	 
+ }
+ void retainall()
+ {
+	 ArrayList ob7= new ArrayList();
+	 ArrayList ob8= new ArrayList();
+	 ob7.add("nick");
+	 ob7.add(2);
+	 ob7.add(false);
+	 ob7.add(44.4);
+	 
+	 ob8.add("nick");
+	 ob8.add(2);
+	 ob8.add(true); 
+	 ob7.retainAll(ob8);
+	 System.out.println("reatin all method = "+ob7);
+ }
+ void clear()
+ {
+	 ArrayList ob8= new ArrayList();
+	 ob8.add("nick");
+	 ob8.add(2);
+	 ob8.add(false);
+	 ob8.add(44.4);
+	 
+	 ob8.clear();
+	 System.out.println("claer method "+ob8);
+	 
+ }
+public static void main(String[] args)
+{
+	Arraylist_All_Method ob1=new Arraylist_All_Method();
+	ob1.add();
+	ob1.addall();
+	ob1.remove();
+	ob1.removeall();
+	ob1.contain();
+	ob1.containall();
+	ob1.retainall();
+	ob1.clear();
+}
+}

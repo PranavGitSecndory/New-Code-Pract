@@ -1,0 +1,51 @@
+package File_handling;
+
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
+
+
+public class Deserilization 
+{   public static void main(String[] args) {
+	 String file ="C:\\Users\\patil\\OneDrive\\Desktop\\File_handle\\divesh\\";
+    try {
+       
+        FileInputStream ob = new FileInputStream(file);
+        ObjectInputStream ob1 = new ObjectInputStream(ob);
+
+        Emp e1 = (Emp) ob1.readObject();
+        Emp e2 = (Emp) ob1.readObject();
+
+        System.out.println("deserilize employ ..");
+        System.out.println(e1);
+        System.out.println(e2);
+        ob.close();
+    } catch (Exception e) {
+        System.out.println("Error: " + e);
+    }
+}
+}
+
+class Emp implements Serializable {
+    int id;
+    String name;
+    String address;
+
+    public Emp(int id, String name, String address) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+    }
+
+    public int getId() { return id; }
+    public String getName() { return name; }
+    public String getAddress() { return address; }
+
+    // For displaying object details
+    @Override
+    public String toString() {
+        return "Emp [id=" + id + ", name=" + name + ", address=" + address + "]";
+    }
+}
+	
+

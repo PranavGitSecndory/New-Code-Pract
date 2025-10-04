@@ -1,0 +1,66 @@
+package com.collection;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+
+public class Task_2_3_oct {
+public static void main(String[] args) {
+	
+	
+	//task 2 we can convert AL to LL 
+	
+//	ArrayList<String> ob=new ArrayList<>();
+//	ob.add("Nick");
+//	ob.add("sagar");
+//	ob.add("ketan");
+//	
+//	LinkedList<String> ob1=new LinkedList<>(ob);
+//	System.out.println("arraylist data ="+ob);
+//	System.out.println("Linklist data ="+ob1);
+	
+	
+	//Task 3  a, b,c collection call any one and prind all three collection data
+	       
+//	        ArrayList<String> A = new ArrayList<>();
+//	        ArrayList<String> B = new ArrayList<>();
+//	        ArrayList<String> C = new ArrayList<>();
+//
+//	        A.add("Don");
+//	        A.add("surya");
+//	        
+//	        B.add("nikhil");
+//	        B.add("pranv");
+//
+//	        C.add("ketan");
+//	        C.add("Divesh");
+
+//	        A.addAll(B);
+//	        A.addAll(C);
+//	        C.addAll(A);
+//	        C.addAll(B);
+//	        B.addAll(C);
+//	        B.addAll(A);
+//	        
+//	        System.out.println("Collection a = " + A);
+//	        System.out.println("Collection c = " + C);
+//	        System.out.println("Collection b = " + B);
+	   
+
+//	Task 4 
+
+	ArrayList<String> ob = new ArrayList<>();
+    ArrayList<String> ob1= new ArrayList<>();
+    
+    ob.add("Don");
+    ob.add("surya");
+    
+    ob1.add("nikhil");
+    ob1.add("pranv");
+    
+    
+    System.out.println("All in one object calling "+ob1.addAll(ob));
+    
+
+}	
+
+}

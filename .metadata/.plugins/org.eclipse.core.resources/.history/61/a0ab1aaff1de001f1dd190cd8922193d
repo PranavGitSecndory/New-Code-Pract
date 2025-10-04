@@ -1,0 +1,23 @@
+package Practice;
+import java.util.Scanner;
+public class mock
+{
+	  public static void main(String[] args) {
+	        Scanner sc = new Scanner(System.in);
+	        
+	        System.out.println("Enter an n-digit number:");
+	        String number = sc.next();  
+	        
+	        for (char digit : number.toCharArray()) { 
+	            System.out.println(digit);
+	            if (digit == '0') { 
+	                System.out.println("Encountered zero, stopping.");
+	                break;
+	            }
+	        }
+	        
+	        sc.close();
+	    }
+	}
+
+

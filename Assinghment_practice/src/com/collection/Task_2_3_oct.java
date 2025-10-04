@@ -1,0 +1,157 @@
+package com.collection;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.StringTokenizer;
+
+
+class Employe {
+    int id;
+    String name;
+    int basicSalary;
+    double pf;
+    double fsal;
+
+    public Employe(int id, String name, int basicSalary) {
+        this.id = id;
+        this.name = name;
+        this.basicSalary = basicSalary;
+        this.pf = basicSalary * 0.12;
+        this.fsal = basicSalary - pf;
+    }
+    
+
+    @Override
+    public String toString() {
+        return id + "#" + name + "#" + basicSalary + "#" + pf + "#" + fsal;
+    }
+}
+
+public class Task_2_3_oct {
+    public static void main(String[] args) {
+    	
+    	
+        ArrayList<Employe> employees = new ArrayList<>();
+
+        FileReader fr = null;
+        BufferedReader br = null;
+        
+
+        try {
+            fr = new FileReader("C:\\AA Nikhil\\Task_1.txt");
+            br = new BufferedReader(fr);
+            
+            String data;
+            
+            while ((data= br.readLine()) != null)
+            {
+            	
+                StringTokenizer st = new StringTokenizer(data, "#");
+                if (st.countTokens() >= 3) 
+                {
+                    int id = Integer.parseInt(st.nextToken());
+                    String name = st.nextToken();
+                    int basic = Integer.parseInt(st.nextToken());
+                    
+                    employees.add(new Employe(id, name, basic));
+                }
+            
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+              fr.close();
+               br.close();
+            } catch (IOException e2) {
+                e2.printStackTrace();
+            }
+        }
+
+   
+
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("Task_data.txt")))
+        {
+            System.out.println("ID\tName\tBasic\tPF\tfsal");
+            
+            for (Employe emp : employees) {
+             
+                bw.write(emp.toString());
+                bw.newLine();
+
+          
+                System.out.println(emp.id + "\t" + emp.name + "\t" + emp.basicSalary + "\t" + emp.pf + "\t" + emp.fsal);
+            }
+         ;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    
+    
+
+	
+	
+	//task 2 we can convert AL to LL 
+	
+//	ArrayList<String> ob=new ArrayList<>();
+//	ob.add("Nick");
+//	ob.add("sagar");
+//	ob.add("ketan");
+//	
+//	LinkedList<String> ob1=new LinkedList<>(ob);
+//	System.out.println("arraylist data ="+ob);
+//	System.out.println("Linklist data ="+ob1);
+	
+	
+	//Task 3  a, b,c collection call any one and prind all three collection data
+	       
+//	        ArrayList<String> A = new ArrayList<>();
+//	        ArrayList<String> B = new ArrayList<>();
+//	        ArrayList<String> C = new ArrayList<>();
+//
+//	        A.add("Don");
+//	        A.add("surya");
+//	        
+//	        B.add("nikhil");
+//	        B.add("pranv");
+//
+//	        C.add("ketan");
+//	        C.add("Divesh");
+
+//	        A.addAll(B);
+//	        A.addAll(C);
+//	        C.addAll(A);
+//	        C.addAll(B);
+//	        B.addAll(C);
+//	        B.addAll(A);
+//	        
+//	        System.out.println("Collection a = " + A);
+//	        System.out.println("Collection c = " + C);
+//	        System.out.println("Collection b = " + B);
+	   
+
+//	Task 4  use add all method to prin in call one oject
+
+//	ArrayList<String> ob = new ArrayList<>();
+//    ArrayList<String> ob1= new ArrayList<>();
+//    
+//    ob.add("Don");
+//    ob.add("surya");
+//    
+//    ob1.add("nikhil");
+//    ob1.add("pranv");
+//    
+//    ob1.addAll(ob);
+//    System.out.println("All in one object calling = "+ob1);
+    
+
+}	
+
+}

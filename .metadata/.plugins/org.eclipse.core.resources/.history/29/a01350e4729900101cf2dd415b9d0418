@@ -1,0 +1,14 @@
+package pkg_2_Access_Modifer_prc;
+
+public class Q1_public_2Nd_class {
+	
+
+
+	String name="Nikhil";
+	static double Number = 8823234354d;
+	int age=18;
+	public void Showdetails()
+	{
+		System.out.println("Name : "+name+", Number : "+Number+", Age : "+age);
+	}
+}

@@ -1,0 +1,18 @@
+package Queue;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+
+public class Deque_demo {
+public static void main(String[] args) {
+	Deque ob =new ArrayDeque();
+	ob.push(10);
+	ob.push(101);
+	ob.push(102);
+	ob.offer(29);
+	ob.add(200);
+	ob.offerFirst(20);
+	ob.offerLast(300);
+	System.out.println(ob);
+}
+}

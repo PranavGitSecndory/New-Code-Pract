@@ -1,0 +1,44 @@
+package mini_application_Id_genration;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.InputStreamReader;
+import java.util.Scanner;
+
+public class Bank_Operation {
+	  private final String MASTER_FILE = "Main.txt";
+	  private final String TRANSACTION_FILE = "Transaction.txt";
+	  Scanner sc=new Scanner(System.in);
+	public void signup()
+	{
+		
+		try {
+			System.out.print("FIRST NAME: ");
+            String firstName = sc.nextLine();
+            System.out.print("SURNAME: ");
+            String surname = sc.nextLine();
+            System.out.print("PASSWORD: ");
+            String password = sc.nextLine();
+            System.out.print("MOBILE NO: ");
+            String mobileNo = sc.nextLine();
+            System.out.print("AGE: ");
+            String age = sc.nextLine();
+            System.out.print("MIN BALANCE AMT: ");
+            double minBalance = Double.parseDouble(sc.nextLine());
+			System.out.println("");
+			
+			int id=100;
+			File f=new File(M);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
+	public void Login()
+	{
+		
+	}
+}

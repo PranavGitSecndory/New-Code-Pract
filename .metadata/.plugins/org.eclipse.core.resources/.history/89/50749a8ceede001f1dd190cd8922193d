@@ -1,0 +1,32 @@
+package Practice;
+import java.util.Scanner;
+public class mock
+{
+	public static void main(String [] args) {
+		Scanner sc =new Scanner(System.in);
+		
+		System.out.println("enter the number");
+		int n =sc.nextInt();
+		
+		int rem=0;
+		int fmax=0;
+		int smax=0;
+		
+		for(int i=n; i>0; i=i/10)
+		{
+			rem=i%10;
+			if(fmax<rem)
+			{
+				fmax=rem;
+			}
+			if(smax<rem && fmax!=rem)
+			{
+				smax=rem;
+			}
+		}
+		System.out.println("first max is = "+ fmax);
+		System.out.println("second max is = "+ smax);
+	}
+	
+}
+

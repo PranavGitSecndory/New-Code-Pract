@@ -1,0 +1,13 @@
+package mini_application_Id_genration;
+
+public class Bank_Operation {
+
+	public void signup()
+	{
+		
+	}
+	public void Login()
+	{
+		
+	}
+}

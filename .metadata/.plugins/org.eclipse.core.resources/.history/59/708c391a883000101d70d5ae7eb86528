@@ -1,0 +1,47 @@
+package File_handling;
+
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
+
+
+public class Deserilization 
+{   public static void main(String[] args) {
+    try {
+        
+        FileInputStream ob = new FileInputStream("C:\\\\Users\\\\patil\\\\OneDrive\\\\Desktop\\\\File_handle\\\\sagar.ser");
+        ObjectInputStream ob1 = new ObjectInputStream(ob);
+
+        Emp e1 = (Emp) ob1.readObject();
+        Emp e2 = (Emp) ob1.readObject();
+
+        System.out.println("ID: " + e1.getId() + ", Name: " + e1.getName() + ", Address: " + e1.getAddress());
+        System.out.println("ID: " + e2.getId() + ", Name: " + e2.getName() + ", Address: " + e2.getAddress());
+
+        ob1.close();
+        ob.close();
+    } catch (Exception e) {
+        System.out.println("Error: " + e);
+    }
+}
+
+
+}class Emp implements Serializable {
+    int id;
+    String name;
+    String address;
+
+    public Emp(int id, String name, String address) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+    }
+
+    public int getId() { return id; }
+    public String getName() { return name; }
+    public String getAddress() { return address; }
+}
+
+
+	
+

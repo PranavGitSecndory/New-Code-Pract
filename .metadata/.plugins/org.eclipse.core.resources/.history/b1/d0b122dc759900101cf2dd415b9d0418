@@ -1,0 +1,13 @@
+package pkg_1_Access_Modifier_prc;
+
+public class Q2_Public_Class_1 {
+	public String name="Sagar";
+	public static long number=9876545678L;
+	public int age=20;
+	public void Showdeails()
+	{
+		System.out.println("Name : "+name+", Number : "+number+", Age : "+age);
+	}
+}
+
+

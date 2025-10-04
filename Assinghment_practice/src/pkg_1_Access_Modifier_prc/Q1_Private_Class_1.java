@@ -1,0 +1,47 @@
+package pkg_1_Access_Modifier_prc;
+
+public class Q1_Private_Class_1 {
+	private String name;
+	private static long number;
+	private int age;
+	
+
+
+	public String getName() {
+		return name;
+	}
+
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+
+	public static long getNumber() {
+		return number;
+	}
+
+
+
+	public void setNumber(long number) {
+		Q1_Private_Class_1.number = number;
+	}
+
+
+
+	public int getAge() {
+		return age;
+	}
+
+
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+
+
+
+}

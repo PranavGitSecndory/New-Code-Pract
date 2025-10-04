@@ -1,0 +1,29 @@
+package Practice;
+import java.util.Scanner;
+public class mock
+{
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    
+    System.out.println("Enter an n-digit number:");
+    int num = sc.nextInt();
+    
+    int evenCount = 0, oddCount = 0;
+    while (num > 0) {
+        int digit = num % 10;
+        if (digit % 2 == 0) evenCount++;
+        else oddCount++;
+        num /= 10;
+
+        if (evenCount > 5) {  
+            System.out.println("More than 5 even numbers found, stopping early.");
+            break;
+        }
+    }
+
+    System.out.println("Even digits: " + evenCount);
+    System.out.println("Odd digits: " + oddCount);
+    
+    sc.close();
+}
+}

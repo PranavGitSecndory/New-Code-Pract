@@ -1,0 +1,30 @@
+package com.in;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class FileReadAssignment {
+public static void main(String args[])
+{
+	FileReader fr;
+	BufferedReader br;
+	try {
+		fr=new FileReader("C:\\AA Nikhil\\Assignment_23_Sep");
+		br=new BufferedReader(fr);
+		String data=br.readLine();
+		while(data != null)
+		{
+			System.out.println(data);
+			data=br.readLine();
+		}
+	} catch (FileNotFoundException e) {
+		// TODO: handle exception
+		e.printStackTrace();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+}
+}

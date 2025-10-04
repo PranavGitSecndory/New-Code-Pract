@@ -1,0 +1,30 @@
+package com.collection;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class DemoList {
+public static void main(String[] args) {
+	//List<Integer> l=new ArrayList<Integer>();
+	ArrayList<String> al=new ArrayList();
+	//add couple of object
+//	int a=10;
+//	Integer in=new Integer(3);
+//	al.add(a);//it will be use before 1.5 java
+	//al.add(1);//Auto boxing Integer
+	al.add("nick");//string
+	al.add("patil");
+	//al.add(4.5f);//float
+	//Check the size of collection
+	System.out.println(al.size());
+	//search form a given perticular in object
+	System.out.println("search"+al.contains("nick"));
+	//list for all the object
+	System.out.println(al);
+	for(String s:al)//know for aas aeach object
+	{
+		System.out.println(s);
+	}
+	
+}
+}

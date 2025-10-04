@@ -1,0 +1,11 @@
+package pkg_1_Access_Modifier_prc;
+
+import pkg_2_Access_Modifer_prc.Q1_public_2Nd_class;
+
+public class Q1_Public {
+public static void main(String args[])
+{
+	Q1_public_2Nd_class data= new Q1_public_2Nd_class();
+	
+}
+}

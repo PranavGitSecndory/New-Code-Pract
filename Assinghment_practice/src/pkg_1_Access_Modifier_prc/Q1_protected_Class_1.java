@@ -1,0 +1,12 @@
+package pkg_1_Access_Modifier_prc;
+
+public class Q1_protected_Class_1 {
+	protected String name="pranav";
+	protected static long number=9654327586L;
+	protected int age=100;
+	
+	protected void pranv_Detsils()
+	{
+		System.out.println("Name : "+name+", Number : "+number+", Age : "+age);
+	}
+}

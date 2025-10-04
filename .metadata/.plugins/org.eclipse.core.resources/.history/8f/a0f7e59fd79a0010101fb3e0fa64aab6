@@ -1,0 +1,58 @@
+package com.in;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.StringTokenizer;
+
+public class TaskFileTokenizer {
+public static void main(String[] args) {
+	FileReader fr=null;
+	BufferedReader br=null;
+	StringTokenizer st;
+	
+	try {
+		fr=new FileReader("Task.txt");
+		br=new BufferedReader(fr);
+		String data =br.readLine();
+		System.out.println("id "+"\tName "+"\tsalary "+" Gst "+"\tfsalry " );	
+		while(data!=null)
+		{
+			st =new StringTokenizer(data,"#");
+			if (st.countTokens() == 3) {
+                String id = st.nextToken();
+                String name = st.nextToken();
+                double salary = Double.parseDouble(st.nextToken());
+
+                double gst = 0.0;
+                double finalSalary = salary;
+
+                if (salary > 10000) {
+                    gst = salary * 0.30;  // 30% GST
+                    finalSalary = salary - gst;
+                }
+
+                System.out.println(id + "\t" + name + "\t" + salary +
+                                   "\t" +  gst + "\t" + finalSalary);
+            }
+
+			
+			data=br.readLine();
+		}
+		
+		
+	} catch (IOException e) {
+		// TODO: handle exception
+		e.printStackTrace();
+	}
+	finally {
+		try {
+			fr.close();
+			br.close();
+		} catch (IOException e2) {
+			// TODO: handle exception
+			e2.printStackTrace();
+		}
+	}
+}
+}

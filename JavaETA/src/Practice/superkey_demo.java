@@ -1,0 +1,33 @@
+package Practice;
+	
+	class base
+	{
+		int n;
+		void print()
+		{
+			System.out.println("base");
+		}
+	}
+	
+	class derived extends base
+	{
+		void initialize(int a)
+		{
+			super.n=a;
+			System.out.println(n);
+		}
+		public void display()
+		{
+			System.out.println("n");
+		}
+	}
+public class superkey_demo {
+	
+	public static void main(String args[])
+	{
+		derived ob=new derived();
+		ob.initialize(100);
+		
+	}
+
+}

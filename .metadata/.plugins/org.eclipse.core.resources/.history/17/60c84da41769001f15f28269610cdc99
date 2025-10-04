@@ -1,0 +1,30 @@
+package Practice;
+
+public  class This_constroctor
+{
+	void this_con()
+	
+	{
+		this(20);
+		System.out.println("default");
+	}
+	void this_con(int a)
+	
+	{
+		this(" ");
+		System.out.println("int parameter");
+	}
+	void this_con(String s)
+
+	{
+		
+		System.out.println("String param");
+	}
+	
+	
+	public static void main(String args[])
+	{
+		This_constroctor ob=new This_constroctor();
+	
+	}
+}

@@ -1,0 +1,41 @@
+package mini_application_Id_genration;
+import java.util.Scanner;
+
+public class Core_Banking {
+public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	Bank_Operation Bank =new Bank_Operation();
+	
+	while(true)
+	{
+		System.out.println("Welcome To Banking Aplication ");
+		System.out.println("1) Signup");
+		System.out.println("2) LogIn");
+		System.out.println("3) Exit");
+		System.out.println("Enter the your choice");
+		String Choice=sc.nextLine();
+		
+		switch (Choice) {
+		case "1": 
+		{
+			Bank.signup();
+			break;
+		}
+		case "2":
+		{
+			Bank.Login();
+			break;
+		}
+		case "3":
+		{
+			System.out.println("Thank you for use aplication Exit.....");
+		}
+		default:
+			
+			System.out.println("Enter valid choice");
+		}
+		
+	}
+	
+}
+}

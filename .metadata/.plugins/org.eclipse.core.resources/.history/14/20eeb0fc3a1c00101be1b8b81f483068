@@ -1,0 +1,17 @@
+package Collection;
+
+import java.util.ArrayList;
+
+public class Arraylist_All_Method {
+
+ void add()
+{
+		ArrayList ob=new ArrayList();
+		ob.add("sagar");
+		System.out.println(ob);
+}
+public static void main(String[] args) {
+	Arraylist_All_Method ob1=new Arraylist_All_Method();
+	ob1.add();
+}
+}

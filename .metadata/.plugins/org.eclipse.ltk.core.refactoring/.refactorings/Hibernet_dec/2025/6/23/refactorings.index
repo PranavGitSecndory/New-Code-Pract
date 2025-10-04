@@ -1,0 +1,9 @@
+1749034563517	Move file
+1749034609043	Rename resource 'hibernate.cfx.xml'
+1749038091916	Rename type 'Question'
+1749038112537	Rename type 'Answer'
+1749038282720	Delete element
+1749100979830	Rename type 'App_ManyToMany'
+1749101032608	Rename package 'com.map.ManyToMany'
+1749102245485	Rename type 'App_OneToMany'
+1749107668725	Rename type 'App'

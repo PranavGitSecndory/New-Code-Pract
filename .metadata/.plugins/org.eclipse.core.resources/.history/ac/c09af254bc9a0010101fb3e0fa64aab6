@@ -1,0 +1,59 @@
+package com.in;
+
+import java.io.BufferedReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class DemoFileWrite {
+	public static void main(String[] args) {
+		
+		FileWriter fw =null;
+		BufferedReader br;
+		InputStreamReader isr;
+
+		
+		
+		try {
+			//Create a new File
+			fw= new FileWriter("Nikhil.txt",true);
+			isr =new InputStreamReader(System.in);
+			br=new BufferedReader(isr);
+			//create a pointer from read data from console
+			System.out.println("enter id");
+			String id =br.readLine();
+			System.out.println("enter name");
+			String name =br.readLine();
+			System.out.println("enter bsal");
+			String bsal =br.readLine();
+			System.out.println();
+			
+			
+			fw.write(id);
+			fw.write("#");
+			fw.write(name);
+			fw.write("#");
+			fw.write(bsal);
+			fw.write("#");
+			
+			
+		} catch (IOException e)
+		{
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		finally {
+			try {fw.close();
+				
+			} catch (IOException e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
+			//close the code anyway
+			
+		}
+	}
+
+	
+}

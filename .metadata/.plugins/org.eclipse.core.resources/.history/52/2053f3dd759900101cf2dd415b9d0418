@@ -1,0 +1,13 @@
+package pkg_1_Access_Modifier_prc;
+
+public class Q2_Public_Class_2 {
+ public static  int age;
+
+public static void main(String args[])
+{
+	Q2_Public_Class_1 data =new Q2_Public_Class_1();
+	data.Showdeails();
+	int a=age;
+	System.out.println(a);
+}
+}
