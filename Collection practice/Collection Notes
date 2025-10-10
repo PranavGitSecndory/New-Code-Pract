@@ -1,0 +1,21 @@
+
+Collection
+
+MAP ---key / value
+
+                      MAP
+
+        HashMap         TreeMap     Linkedhashmap
+        no order
+        no duplicate    
+
+USE CASE
+
+    Aadhar 
+    key--id---tecnaclly id is unique
+    value is normally an object
+
+
+crm coustmer relation object    
+
+map has a diff method for add it use a put method
