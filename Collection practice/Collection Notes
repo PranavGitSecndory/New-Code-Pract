@@ -13,10 +13,11 @@ USE CASE
 
     Aadhar 
     key--id---tecnaclly id is unique
-    value is normally an object
+    value is normally an obj
 
 
 crm coustmer relation obj  
 
 map has a diff method for add it use a put method
 map is one of the main in collection
+hello pranv
