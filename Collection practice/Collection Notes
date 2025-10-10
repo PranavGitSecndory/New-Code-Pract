@@ -16,7 +16,7 @@ USE CASE
     value is normally an object
 
 
-crm coustmer relation object    
+crm coustmer relation obj  
 
 map has a diff method for add it use a put method
 map is one of the main in collection
