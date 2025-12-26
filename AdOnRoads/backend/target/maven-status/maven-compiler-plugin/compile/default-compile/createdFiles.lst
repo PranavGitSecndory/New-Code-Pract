@@ -1,0 +1,5 @@
+com\adonroads\backend\Model\User.class
+com\adonroads\backend\BackendApplication.class
+com\adonroads\backend\Controller\UserController.class
+com\adonroads\backend\Controller\AdminController.class
+com\adonroads\backend\Controller\AdvertiserController.class
