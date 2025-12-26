@@ -10,6 +10,6 @@ public class AdvertiserController {
 
     @GetMapping("/dashboard")
     public String dashboard() {
-        return "Advertiser Dashboard API working";
+        return "Advertiser Dashboard API working all goes right";
     }
 }
